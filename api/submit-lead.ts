@@ -88,25 +88,22 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const spreadsheetId = process.env.GOOGLE_SHEETS_ID;
     if (!spreadsheetId) throw new Error('GOOGLE_SHEETS_ID missing');
 
-    // Append row
+    // Append row - matching your Google Sheet structure
+    // A: timestamp, B: name, C: zip, D: phone, E: email, F: source, G: notes
+    const fullName = `${data.firstName} ${data.lastName}`;
     const values = [[
-      new Date().toISOString(),
-      data.zip,
-      data.project_type,
-      data.roof_material,
-      data.street,
-      data.email,
-      data.firstName,
-      data.lastName,
-      data.phone,
-      data.tcpa ? 'Yes' : 'No',
-      req.headers.origin || '',
-      typeof ip === 'string' ? ip : '',
+      new Date().toISOString(), // A: timestamp
+      fullName, // B: name
+      data.zip, // C: zip
+      data.phone, // D: phone
+      data.email, // E: email
+      req.headers.origin || '', // F: source
+      `Project: ${data.project_type}, Material: ${data.roof_material}, Address: ${data.street}`, // G: notes
     ]];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:L', // timestamp, zip, project_type, roof_material, street, email, firstName, lastName, phone, tcpa, source, ip
+      range: 'Sheet1!A:G', // Match your sheet columns
       valueInputOption: 'USER_ENTERED',
       requestBody: { values },
     });
