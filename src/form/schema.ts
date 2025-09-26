@@ -1,4 +1,4 @@
-import { FormSchema } from './types'
+import type { FormSchema } from './types'
 
 export const schema: FormSchema = {
   steps: [
