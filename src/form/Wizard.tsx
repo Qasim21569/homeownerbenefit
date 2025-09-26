@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react'
 import { schema } from './schema'
 import type { FieldDefinition, FormValues, ValidationError } from './types'
 import AddressAutocomplete from './AddressAutocomplete'
+import '../styles/form.css'
 
 function validateField(field: FieldDefinition, value: string | boolean | undefined): string | null {
   if (field.required) {
@@ -82,22 +83,22 @@ export default function Wizard() {
 
   function renderField(field: FieldDefinition) {
     const error = errors[field.id]
-    const commonClass = `w-full border rounded px-3 py-2 ${error ? 'border-red-500' : 'border-gray-300'}`
+    const inputClass = `field-input ${error ? 'error' : ''}`
     switch (field.type) {
       case 'text':
       case 'email':
       case 'number':
       case 'tel':
         return (
-          <div>
-            <label className="block text-sm mb-1" htmlFor={field.id}>{field.label}{field.required ? ' *' : ''}</label>
+          <div className="field-group">
+            <label className="field-label" htmlFor={field.id}>{field.label}{field.required ? ' *' : ''}</label>
             {field.id === 'street' ? (
               <AddressAutocomplete
                 inputId={field.id}
                 value={(values[field.id] as string) || ''}
                 onChange={(v) => setValue(field.id, v)}
                 placeholder={field.placeholder}
-                className={commonClass}
+                className={inputClass}
               />
             ) : (
               <input
@@ -106,22 +107,22 @@ export default function Wizard() {
                 type={field.type === 'number' ? 'text' : field.type}
                 inputMode={field.type === 'number' ? 'numeric' : undefined}
                 placeholder={field.placeholder}
-                className={commonClass}
+                className={inputClass}
                 value={(values[field.id] as string) || ''}
                 onChange={(e) => setValue(field.id, e.target.value)}
               />
             )}
-            {error && <p className="text-red-600 text-xs mt-1">{error}</p>}
+            {error && <p className="field-error">{error}</p>}
           </div>
         )
       case 'select':
         return (
-          <div>
-            <label className="block text-sm mb-1" htmlFor={field.id}>{field.label}{field.required ? ' *' : ''}</label>
+          <div className="field-group">
+            <label className="field-label" htmlFor={field.id}>{field.label}{field.required ? ' *' : ''}</label>
             <select
               id={field.id}
               name={field.id}
-              className={commonClass}
+              className={inputClass}
               value={(values[field.id] as string) || ''}
               onChange={(e) => setValue(field.id, e.target.value)}
             >
@@ -130,45 +131,50 @@ export default function Wizard() {
                 <option key={o.value} value={o.value}>{o.label}</option>
               ))}
             </select>
-            {error && <p className="text-red-600 text-xs mt-1">{error}</p>}
+            {error && <p className="field-error">{error}</p>}
           </div>
         )
       case 'radio':
         return (
-          <div>
-            <label className="block text-sm mb-3 font-medium">{field.label}{field.required ? ' *' : ''}</label>
-            <div className="grid grid-cols-1 gap-2">
+          <div className="field-group">
+            <label className="field-label">{field.label}{field.required ? ' *' : ''}</label>
+            <div className="radio-group">
               {field.options?.map((option, idx) => (
-                <label key={option.value} className="flex items-center gap-3 p-3 border rounded cursor-pointer hover:bg-gray-50">
-                  <div className="text-lg font-bold text-gray-500">{idx + 1}</div>
+                <label 
+                  key={option.value} 
+                  className={`radio-option ${values[field.id] === option.value ? 'selected' : ''}`}
+                >
+                  <div className="radio-number">{idx + 1}</div>
                   <input
                     type="radio"
                     name={field.id}
                     value={option.value}
                     checked={values[field.id] === option.value}
                     onChange={(e) => setValue(field.id, e.target.value)}
-                    className="w-4 h-4"
+                    className="radio-input"
                   />
-                  <span className="flex-1">{option.label}</span>
+                  <span className="radio-label">{option.label}</span>
                 </label>
               ))}
             </div>
-            {error && <p className="text-red-600 text-xs mt-1">{error}</p>}
+            {error && <p className="field-error">{error}</p>}
           </div>
         )
       case 'checkbox':
         return (
-          <div className="flex items-start gap-2">
-            <input
-              id={field.id}
-              name={field.id}
-              type="checkbox"
-              checked={Boolean(values[field.id])}
-              onChange={(e) => setValue(field.id, e.target.checked)}
-              className={`mt-1 ${error ? 'outline outline-1 outline-red-500' : ''}`}
-            />
-            <label className="text-sm" htmlFor={field.id}>{field.label}{field.required ? ' *' : ''}</label>
-            {error && <p className="text-red-600 text-xs mt-1">{error}</p>}
+          <div className="field-group">
+            <div className="checkbox-group">
+              <input
+                id={field.id}
+                name={field.id}
+                type="checkbox"
+                checked={Boolean(values[field.id])}
+                onChange={(e) => setValue(field.id, e.target.checked)}
+                className="checkbox-input"
+              />
+              <label className="checkbox-label" htmlFor={field.id}>{field.label}{field.required ? ' *' : ''}</label>
+            </div>
+            {error && <p className="field-error">{error}</p>}
           </div>
         )
       default:
@@ -177,24 +183,39 @@ export default function Wizard() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-6">
-      <div className="w-full max-w-2xl">
-        <div className="mb-4">
-          <div className="h-2 bg-gray-200 rounded">
-            <div className="h-2 bg-green-600 rounded" style={{ width: `${progress}%` }} />
+    <div className="form-container">
+      <div className="form-wrapper">
+        <div className="form-header">
+          <h1>{step.title}</h1>
+          {step.description && <p>{step.description}</p>}
+        </div>
+        <div className="form-body">
+          <div className="progress-bar">
+            <div className="progress-fill" style={{ width: `${progress}%` }} />
           </div>
-          <div className="text-sm text-gray-600 mt-1">Step {stepIndex + 1} of {schema.steps.length}</div>
-        </div>
-        <h1 className="text-2xl font-semibold mb-1">{step.title}</h1>
-        {step.description && <p className="text-gray-600 mb-4">{step.description}</p>}
-        <div className="grid grid-cols-1 gap-4">
-          {step.fields.map((f) => (
-            <div key={f.id}>{renderField(f)}</div>
-          ))}
-        </div>
-        <div className="flex gap-3 mt-6">
-          <button className="px-4 py-2 rounded border" onClick={back} disabled={stepIndex === 0}>Back</button>
-          <button className="px-4 py-2 rounded bg-pink-600 text-white" onClick={next}>{isLast ? 'Submit' : 'Next'}</button>
+          <div className="step-indicator">Step {stepIndex + 1} of {schema.steps.length}</div>
+          
+          <div>
+            {step.fields.map((f) => (
+              <div key={f.id}>{renderField(f)}</div>
+            ))}
+          </div>
+          
+          <div className="button-group">
+            <button 
+              className="btn btn-secondary" 
+              onClick={back} 
+              disabled={stepIndex === 0}
+            >
+              Back
+            </button>
+            <button 
+              className={`btn ${isLast ? 'btn-submit' : 'btn-primary'}`} 
+              onClick={next}
+            >
+              {isLast ? 'Submit' : 'Next'}
+            </button>
+          </div>
         </div>
       </div>
     </div>
