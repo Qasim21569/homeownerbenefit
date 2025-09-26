@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/submit-lead.ts": {
+      "runtime": "@vercel/node"
+    }
+  }
+}
