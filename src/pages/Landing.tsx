@@ -1,7 +1,8 @@
+import '../styles/landing.css'
+
 export default function Landing() {
   return (
     <div>
-      <link rel="stylesheet" href="/src/styles/landing.css" />
       <section id="iwi9" className="ll-section empty-section"><div id="is6i" className="ll-container empty-section--container"><span id="iebp"></span><img id="iglh" src="https://dailyhomeownerbenefits.com/roof-1/20d500e4-67b8-4706-4e1c-35ca6bae6300.webp" alt="Image" className="ll-image" /></div></section>
       <section id="isjh" className="ll-section empty-section"><div id="izig" className="ll-container empty-section--container"><div id="idl7i" data-date-days-before="0" data-date-format="long"><span id="i686c" data-date-text-before="">Roof Replacement • </span><span id="inc79" data-date-text-date="">March 13, 2025</span><span id="iy8mb" data-date-text-after=""> </span></div><h1 id="iofdg" className="ll-default-heading">Americans Are Using This Service To Get A Brand New Roof In 2025 (Do This Today!)
         </h1><p id="io6v9" className="ll-default-text">If Your Zip Code Qualifies, You Can Be Eligible For HUGE SAVINGS On A Roof Replacement</p><p id="ifp0k" className="ll-default-text">Homeowners who are fed up with the rising prices from roofing companies are starting to take advantage of a new 
