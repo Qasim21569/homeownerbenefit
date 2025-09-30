@@ -20,6 +20,7 @@ You need to set these environment variables in your Vercel project settings:
    ```
    1XMTokGRT2m4lp8R0OcQCSP5TrA-zta85pg--7hhev74
    ```
+   dewdewdwe;k
 
 ### Optional Variables:
 
