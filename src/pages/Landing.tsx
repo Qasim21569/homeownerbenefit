@@ -1,11 +1,12 @@
+import '../styles/landing.css'
+
 export default function Landing() {
   return (
     <div>
-      <link rel="stylesheet" href="/src/styles/landing.css" />
-      <section id="iwi9" className="ll-section empty-section"><div id="is6i" className="ll-container empty-section--container"><span id="iebp"></span><img id="iglh" src="https://dailyhomeownerbenefits.com/roof-1/20d500e4-67b8-4706-4e1c-35ca6bae6300.webp" alt="Image" className="ll-image" /></div></section>
+      <section id="navbar"><div className="nav-container"><img id="navbar-logo" src="/logo.png" alt="Homeowner Benefit Guide Logo" /></div></section>
       <section id="isjh" className="ll-section empty-section"><div id="izig" className="ll-container empty-section--container"><div id="idl7i" data-date-days-before="0" data-date-format="long"><span id="i686c" data-date-text-before="">Roof Replacement • </span><span id="inc79" data-date-text-date="">March 13, 2025</span><span id="iy8mb" data-date-text-after=""> </span></div><h1 id="iofdg" className="ll-default-heading">Americans Are Using This Service To Get A Brand New Roof In 2025 (Do This Today!)
-        </h1><p id="io6v9" className="ll-default-text">If Your Zip Code Qualifies, You Can Be Eligible For HUGE SAVINGS On A Roof Replacement</p><p id="ifp0k" className="ll-default-text">Homeowners who are fed up with the rising prices from roofing companies are starting to take advantage of a new 
-          <a id="ia8okn" href="https://trk.leiftrk.com/click" className="">nationwide service</a> for energy efficient roofs. This service helps them get high quality roofs without having to spend thousands of dollars of their hard-earned money.</p><img id="io35f" src="https://dailyhomeownerbenefits.com/roof-1/a2bcf4c9-f796-4353-4a27-a093cc2bb100.webp" alt="Image" className="ll-image" /><p id="i86da" className="ll-default-text">Want To See If You Qualify? Here’s How
+        </h1><p id="io6v9" className="ll-default-text">If Your Zip Code Qualifies, You Can Be Eligible For HUGE SAVINGS On A Roof Replacement</p>        <p id="ifp0k" className="ll-default-text">Homeowners who are fed up with the rising prices from roofing companies are starting to take advantage of a new 
+          <span id="ia8okn" className="">nationwide service</span> for energy efficient roofs. This service helps them get high quality roofs without having to spend thousands of dollars of their hard-earned money.</p><img id="io35f" src="https://dailyhomeownerbenefits.com/roof-1/a2bcf4c9-f796-4353-4a27-a093cc2bb100.webp" alt="Image" className="ll-image" /><p id="i86da" className="ll-default-text">Want To See If You Qualify? Here’s How
         </p><p id="i67rm6" className="ll-default-text">Start by specifying your age:
         </p><div id="ib5pxs" data-columns="3-3-3-3" data-columns-t="12" data-columns-m="12"><div id="ipgzbg"><a id="i8okbz" href="/quote"><button id="iqdbx6" className="ll-btn buttons-4__btn ll-full-width"><div id="iqjp8o" className="ll-icon"><svg id="i33ljd" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="i9myy4" d="M12 16L16 12M16 12L12 8M16 12H8M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#FFFFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   </path></svg></div>18-34</button></a></div><div id="i5sbhk"><a id="iff3yo" href="/quote"><button id="ilik6s" className="ll-btn buttons-4__btn ll-full-width"><div id="irf2x1" className="ll-icon"><svg id="i3rrcw" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path id="ijnwuc" d="M12 16L16 12M16 12L12 8M16 12H8M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="#FFFFFFFF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -43,7 +44,7 @@ export default function Landing() {
                   </p><p id="iasnpi">Reply
                   </p><p id="imc072">Share
                   </p></div></div></div></div><div id="imlnxm" className="comments-1__footer"><p id="iei5fq">Load more comments
-            </p></div><a id="i2ao7k" href="/quote" className="ll-btn">CHECK IF MY ZIP CODE QUALIFIES &gt;&gt;</a></div><div id="ia8gn" className="ll-empty-block"><h1 id="i7uzw" className="ll-default-heading"><a id="ilczg">Privacy</a></h1><h1 id="il3ah" className="ll-default-heading"><a id="ifvly">Terms of Use</a></h1><h1 id="iiwxa" className="ll-default-heading"><a id="i8qj4">Contact</a></h1></div><h1 id="illud" className="ll-default-heading">© 2025 All rights reserved.
+        </p></div><a id="i2ao7k" href="/quote" className="ll-btn">CHECK IF MY ZIP CODE QUALIFIES &gt;&gt;</a></div><div id="ia8gn" className="ll-empty-block"><h1 id="i7uzw" className="ll-default-heading"><a id="ilczg">Privacy</a></h1><h1 id="il3ah" className="ll-default-heading"><a id="ifvly">Terms of Use</a></h1><h1 id="iiwxa" className="ll-default-heading"><a id="i8qj4">Contact</a></h1></div>        <h1 id="illud" className="ll-default-heading">© Homeowner Benefit Guide
         </h1></div></section>
     </div>
   )

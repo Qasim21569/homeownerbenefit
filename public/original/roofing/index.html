@@ -17,6 +17,8 @@
 				integration: {}
 			},
 		};
+		
+		// Note: Removed global overrides here to allow normal step navigation
 	</script>
 
 	<link rel="shortcut icon" href="https://assets.prd.heyflow.com/flows/asE8VUAdcRbnBmiciZxf/www/assets/bce3ea25-a665-4508-b75c-5a782b19649e/original.png">
@@ -2180,8 +2182,8 @@
 						        						
 						        						class="generic-button submit large"
 						        						data-type="generic-button"
-						        						data-attr="{&quot;type&quot;:&quot;generic-button&quot;,&quot;name&quot;:&quot;button-submit&quot;,&quot;id&quot;:&quot;id-bf3ad7db&quot;,&quot;containerClass&quot;:&quot;inner-narrow&quot;,&quot;contentClass&quot;:&quot;align-space-between&quot;,&quot;class&quot;:&quot;submit&amp;nbsp;large&quot;,&quot;label&quot;:&quot;Submit&amp;nbsp;Now&quot;,&quot;action&quot;:&quot;submit&quot;,&quot;nextAction&quot;:&quot;redirect&quot;,&quot;target&quot;:&quot;_self&quot;,&quot;redirectURL&quot;:&quot;https://renovationnation.com/thank-you?first_name&#x3D;@first_name&amp;amp;last_name&#x3D;@last_name&amp;amp;phone_number&#x3D;@phone_number&amp;amp;email&#x3D;@email&amp;amp;zip&#x3D;@zip&amp;amp;street&#x3D;@street&amp;amp;leif_pub_id&#x3D;@leif_pub_id&amp;amp;ad_account_id&#x3D;@ad_account_id&amp;amp;source&#x3D;@source&quot;,&quot;paddingTop&quot;:20,&quot;paddingBottom&quot;:20,&quot;tracking&quot;:true,&quot;filename&quot;:null,&quot;icon&quot;:null,&quot;emoji&quot;:null,&quot;eventName&quot;:&quot;submit&quot;}"
-						        						data-action="submit"
+						        						data-attr="{&quot;type&quot;:&quot;generic-button&quot;,&quot;name&quot;:&quot;button-submit&quot;,&quot;id&quot;:&quot;id-bf3ad7db&quot;,&quot;containerClass&quot;:&quot;inner-narrow&quot;,&quot;contentClass&quot;:&quot;align-space-between&quot;,&quot;class&quot;:&quot;submit&amp;nbsp;large&quot;,&quot;label&quot;:&quot;Submit&amp;nbsp;Now&quot;,&quot;action&quot;:&quot;custom&quot;,&quot;nextAction&quot;:&quot;custom&quot;,&quot;target&quot;:&quot;_parent&quot;,&quot;redirectURL&quot;:&quot;&quot;,&quot;paddingTop&quot;:20,&quot;paddingBottom&quot;:20,&quot;tracking&quot;:false,&quot;filename&quot;:null,&quot;icon&quot;:null,&quot;emoji&quot;:null,&quot;eventName&quot;:&quot;custom-submit&quot;}"
+						        						data-action=""
 						        						data-destination=""
 						        						
 						        						>
@@ -2362,7 +2364,24 @@
 	    <h1>An error occurred.</h1>
 	    <div>Activate JavaScript if you have it deactivated in your browser.</div>
 	  </div>
-	</noscript><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9843a88918ff7ba4',t:'MTc1ODczMTM0Mg=='};var a=document.createElement('script');a.src='https://quote.renovationnation.com/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+	</noscript>
+	
+	<script type="text/javascript">
+		// Minimal handler: redirect only when the final submit button is clicked
+		document.addEventListener('DOMContentLoaded', function() {
+			var submitButton = document.getElementById('id-bf3ad7db');
+			if (submitButton) {
+				submitButton.addEventListener('click', function(e) {
+					// Let heyflow validate; if this is the actual final submit, redirect parent
+					// Prevent default only to avoid external redirects
+					e.preventDefault();
+					e.stopPropagation();
+					window.parent.location.href = '/thank-you';
+					return false;
+				});
+			}
+		});
+	</script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9843a88918ff7ba4',t:'MTc1ODczMTM0Mg=='};var a=document.createElement('script');a.src='https://quote.renovationnation.com/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 
 <!-- Mirrored from quote.renovationnation.com/roofing/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 24 Sep 2025 16:29:12 GMT -->
 </html>
