@@ -1,12 +1,11 @@
 export default function ThankYou() {
+  const src = `${import.meta.env.BASE_URL}original/thank-you/index.html`
   return (
-    <div className="min-h-screen">
-      <iframe
-        src="/original/thank-you/index.html"
-        title="Thank You"
-        style={{ width: '100%', height: '100vh', border: '0' }}
-      />
-    </div>
+    <iframe
+      src={src}
+      title="Thank You"
+      className="w-full h-screen border-0"
+    />
   )
 }
 

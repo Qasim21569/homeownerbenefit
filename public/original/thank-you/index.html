@@ -87,6 +87,90 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			.single.single-post.postid-416.bde-section.banner {
     background-position: 100% 100%;
 }		</style>
+		
+		<!-- Custom CSS for logo alignment and styling -->
+		<style type="text/css">
+			/* Header logo styling */
+			.bde-image2-496-124 {
+				max-width: 500px !important;
+				height: auto !important;
+				width: auto !important;
+				filter: brightness(0) invert(1) !important;
+				margin: 0 auto !important;
+				display: block !important;
+			}
+			
+			/* Footer logo styling */
+			.bde-image2-252-104 {
+				max-width: 360px !important;
+				height: auto !important;
+				width: auto !important;
+				filter: brightness(0) invert(1) !important;
+				margin: 0 auto 15px auto !important;
+				display: block !important;
+			}
+			
+			/* Ensure proper alignment for logo containers */
+			.bde-div-496-123 {
+				text-align: center !important;
+				padding: 20px 0 !important;
+			}
+			
+			.bde-div-252-102 {
+				text-align: center !important;
+				display: flex !important;
+				flex-direction: column !important;
+				align-items: center !important;
+			}
+			
+			/* Remove external link styling from footer logo */
+			.bde-container-link-252-103 {
+				display: inline-block !important;
+				text-decoration: none !important;
+			}
+			
+			/* Button styling - remove hover effects for disabled links */
+			.breakdance-link.button-atom.button-atom--primary.bde-button__button {
+				cursor: default !important;
+				opacity: 0.8 !important;
+			}
+			
+			.breakdance-link.button-atom.button-atom--primary.bde-button__button:hover {
+				transform: none !important;
+				box-shadow: none !important;
+			}
+			
+			/* Footer menu links styling */
+			.breakdance-menu-link {
+				cursor: default !important;
+				opacity: 0.7 !important;
+			}
+			
+			.breakdance-menu-link:hover {
+				opacity: 0.9 !important;
+			}
+			
+			/* Responsive adjustments */
+			@media (max-width: 768px) {
+				.bde-image2-496-124 {
+					max-width: 400px !important;
+				}
+				
+				.bde-image2-252-104 {
+					max-width: 300px !important;
+				}
+			}
+			
+			@media (max-width: 480px) {
+				.bde-image2-496-124 {
+					max-width: 360px !important;
+				}
+				
+				.bde-image2-252-104 {
+					max-width: 240px !important;
+				}
+			}
+		</style>
 		<!-- [HEADER ASSETS] -->
 
 
@@ -139,7 +223,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
 
-<img class="bde-image2-496-124 bde-image2" src="https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-300x60.png" srcset="https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-300x60.png 300w, https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-1024x204.png 1024w, https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-768x153.png 768w, https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-1536x306.png 1536w" sizes="(max-width: 300px) 100vw, 300px" width="102">
+<img class="bde-image2-496-124 bde-image2" src="/logo.png" alt="Homeowner Benefit Guide Logo" width="200">
 </div><div class="bde-div-496-101 bde-div">
               
   
@@ -189,7 +273,7 @@ You can now easily get the bathroom of your dreams, <br>complete with hot-tub, s
     
     
     
-    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="https://quote.renovationnation.com/bathroom" target="_self" data-type="url"  >
+    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="#bathroom" target="_self" data-type="url"  >
 
     
         <span class="button-atom__text">Check Availability Now</span>
@@ -239,7 +323,7 @@ All American homeowners are now eligible to apply to get new, modern HVAC <br>us
     
     
     
-    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="https://quote.renovationnation.com/hvac" target="_self" data-type="url"  >
+    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="#hvac" target="_self" data-type="url"  >
 
     
         <span class="button-atom__text">Check Availability Now</span>
@@ -289,7 +373,7 @@ The nationwide roofing service enables all americans with roofs older than 5 yea
     
     
     
-    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="https://quote.renovationnation.com/roofing" target="_self" data-type="url"  >
+    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="#roofing" target="_self" data-type="url"  >
 
     
         <span class="button-atom__text">Check Availability Now</span>
@@ -339,7 +423,7 @@ Americans can now easily get your old floors replaced with brand new ones. <br>
     
     
     
-    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="https://quote.renovationnation.com/flooring" target="_self" data-type="url"  >
+    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="#flooring" target="_self" data-type="url"  >
 
     
         <span class="button-atom__text">Check Availability Now</span>
@@ -389,7 +473,7 @@ All US Homes with Siding older than 5 years are now eligible to get siding insta
     
     
     
-    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="https://quote.renovationnation.com/siding" target="_self" data-type="url"  >
+    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="#siding" target="_self" data-type="url"  >
 
     
         <span class="button-atom__text">Check Availability Now</span>
@@ -439,7 +523,7 @@ All American homeowners are now eligible to apply to get a new luxurious Walk-In
     
     
     
-    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="https://quote.renovationnation.com/walkintubs" target="_self" data-type="url"  >
+    <a class="breakdance-link button-atom button-atom--primary bde-button__button" href="#walkintubs" target="_self" data-type="url"  >
 
     
         <span class="button-atom__text">Check Availability Now</span>
@@ -484,7 +568,7 @@ All American homeowners are now eligible to apply to get a new luxurious Walk-In
 
 
 
-<img class="bde-image2-252-104 bde-image2" src="https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-300x60.png" loading="lazy" srcset="https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-300x60.png 300w, https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-1024x204.png 1024w, https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-768x153.png 768w, https://renovationnation.com/wp-content/uploads/2024/12/logo_small_white-1536x306.png 1536w" sizes="(max-width: 300px) 100vw, 300px">
+<img class="bde-image2-252-104 bde-image2" src="/logo.png" alt="Homeowner Benefit Guide Logo" loading="lazy" width="150">
 
 </a><div class="bde-text-252-105 bde-text">
 Expand your business by connecting with more homeowners.
@@ -545,15 +629,15 @@ Services
   <ul class="breakdance-menu-list" id="menu-114">
               
   
-    <li id="menu-item-527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-527 breakdance-menu-item"><a href="https://quote.renovationnation.com/roofing" class="breakdance-menu-link">Roofing</a></li>
-<li id="menu-item-528" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-528 breakdance-menu-item"><a href="https://quote.renovationnation.com/windows" class="breakdance-menu-link">Windows</a></li>
-<li id="menu-item-529" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-529 breakdance-menu-item"><a href="https://quote.renovationnation.com/hvac" class="breakdance-menu-link">HVAC</a></li>
-<li id="menu-item-530" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-530 breakdance-menu-item"><a href="https://quote.renovationnation.com/gutters" class="breakdance-menu-link">Gutters</a></li>
-<li id="menu-item-531" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-531 breakdance-menu-item"><a href="https://quote.renovationnation.com/bathroom" class="breakdance-menu-link">Bathroom</a></li>
-<li id="menu-item-532" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-532 breakdance-menu-item"><a href="https://quote.renovationnation.com/walkintubs" class="breakdance-menu-link">Walk-In Tubs</a></li>
-<li id="menu-item-533" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-533 breakdance-menu-item"><a href="https://quote.renovationnation.com/security" class="breakdance-menu-link">Home Security</a></li>
-<li id="menu-item-534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-534 breakdance-menu-item"><a href="https://quote.renovationnation.com/flooring" class="breakdance-menu-link">Flooring</a></li>
-<li id="menu-item-535" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-535 breakdance-menu-item"><a href="https://quote.renovationnation.com/siding" class="breakdance-menu-link">Siding</a></li>
+    <li id="menu-item-527" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-527 breakdance-menu-item"><a href="#roofing" class="breakdance-menu-link">Roofing</a></li>
+<li id="menu-item-528" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-528 breakdance-menu-item"><a href="#windows" class="breakdance-menu-link">Windows</a></li>
+<li id="menu-item-529" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-529 breakdance-menu-item"><a href="#hvac" class="breakdance-menu-link">HVAC</a></li>
+<li id="menu-item-530" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-530 breakdance-menu-item"><a href="#gutters" class="breakdance-menu-link">Gutters</a></li>
+<li id="menu-item-531" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-531 breakdance-menu-item"><a href="#bathroom" class="breakdance-menu-link">Bathroom</a></li>
+<li id="menu-item-532" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-532 breakdance-menu-item"><a href="#walkintubs" class="breakdance-menu-link">Walk-In Tubs</a></li>
+<li id="menu-item-533" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-533 breakdance-menu-item"><a href="#security" class="breakdance-menu-link">Home Security</a></li>
+<li id="menu-item-534" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-534 breakdance-menu-item"><a href="#flooring" class="breakdance-menu-link">Flooring</a></li>
+<li id="menu-item-535" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-535 breakdance-menu-item"><a href="#siding" class="breakdance-menu-link">Siding</a></li>
 
   </ul>
   </nav>
