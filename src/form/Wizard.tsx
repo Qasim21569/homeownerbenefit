@@ -52,7 +52,12 @@ export default function Wizard() {
     if (isLast) {
       // submit to Google Sheets
       try {
-        const response = await fetch('/api/submit-lead', {
+        // Use the Vercel API endpoint for both static and Vercel deployments
+        const apiUrl = window.location.hostname === 'localhost' 
+          ? '/api/submit-lead' // Local development
+          : 'https://homeownerbenefit-qasim21569-qasim-kharodias-projects.vercel.app/api/submit-lead'; // Production
+        
+        const response = await fetch(apiUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -68,6 +73,7 @@ export default function Wizard() {
           alert('Submission failed: ' + (data.error || 'Please try again'))
         }
       } catch (error) {
+        console.error('Form submission error:', error);
         alert('Network error. Please check your connection and try again.')
       }
       return
@@ -199,6 +205,16 @@ export default function Wizard() {
             {step.fields.map((f) => (
               <div key={f.id}>{renderField(f)}</div>
             ))}
+            {/* Hidden honeypot field for spam protection */}
+            <input
+              type="text"
+              name="honeypot"
+              value=""
+              onChange={() => {}} // Keep it empty always
+              style={{ display: 'none', position: 'absolute', left: '-9999px' }}
+              tabIndex={-1}
+              autoComplete="off"
+            />
           </div>
           
           <div className="button-group">

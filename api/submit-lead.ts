@@ -3,9 +3,17 @@ import { google } from 'googleapis';
 
 // Simple origin allowlist
 function cors(res: VercelResponse, req: VercelRequest) {
-  const allowed = (process.env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean);
+  // Allow your specific domains
+  const allowed = [
+    'https://homeownerbenefitguide.com',
+    'https://homeownerbenefit-qasim21569-qasim-kharodias-projects.vercel.app',
+    'http://localhost:5173', // for development
+    'https://localhost:5173', // for development
+    ...(process.env.ALLOWED_ORIGINS || '').split(',').map(s => s.trim()).filter(Boolean)
+  ];
+  
   const origin = (req.headers.origin as string) || '';
-  if (allowed.includes(origin)) {
+  if (allowed.includes(origin) || origin.includes('localhost')) {
     res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Vary', 'Origin');
   }
@@ -21,6 +29,25 @@ function bad(res: VercelResponse, code: number, msg: string) {
 function isSpam(body: any) {
   if (typeof body.honeypot === 'string' && body.honeypot.trim().length > 0) return true;
   return false;
+}
+
+async function verifyRecaptcha(token?: string, remoteIp?: string) {
+  const secret = process.env.RECAPTCHA_SECRET;
+  if (!secret) return true; // skip if not configured
+  if (!token) return false;
+
+  const params = new URLSearchParams();
+  params.set('secret', secret);
+  params.set('response', token);
+  if (remoteIp) params.set('remoteip', remoteIp);
+
+  const resp = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: params,
+  });
+  const data = await resp.json();
+  return !!data.success;
 }
 
 function decodePrivateKey(): string {
@@ -81,6 +108,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (isSpam(body)) return bad(res, 400, 'Spam detected');
 
+    // Optional recaptcha verification
+    const recaptchaOk = await verifyRecaptcha(body.recaptchaToken, typeof ip === 'string' ? ip : undefined);
+    if (!recaptchaOk && process.env.RECAPTCHA_SECRET) {
+      return bad(res, 400, 'reCAPTCHA verification failed');
+    }
+
     const { valid, errors, data } = validate(body);
     if (!valid) return bad(res, 400, errors.join(', '));
 
@@ -88,22 +121,28 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const spreadsheetId = process.env.GOOGLE_SHEETS_ID;
     if (!spreadsheetId) throw new Error('GOOGLE_SHEETS_ID missing');
 
-    // Append row - matching your Google Sheet structure
-    // A: timestamp, B: name, C: zip, D: phone, E: email, F: source, G: notes
+    // Append row to the "Roofing Leads Funnel" tab
+    // Column structure: A: timestamp, B: firstName, C: lastName, D: email, E: phone, F: zip, 
+    // G: street, H: project_type, I: roof_material, J: tcpa_consent, K: source, L: ip_address
     const fullName = `${data.firstName} ${data.lastName}`;
     const values = [[
       new Date().toISOString(), // A: timestamp
-      fullName, // B: name
-      data.zip, // C: zip
-      data.phone, // D: phone
-      data.email, // E: email
-      req.headers.origin || '', // F: source
-      `Project: ${data.project_type}, Material: ${data.roof_material}, Address: ${data.street}`, // G: notes
+      data.firstName, // B: firstName
+      data.lastName, // C: lastName
+      data.email, // D: email
+      data.phone, // E: phone
+      data.zip, // F: zip
+      data.street, // G: street
+      data.project_type, // H: project_type
+      data.roof_material, // I: roof_material
+      data.tcpa ? 'Yes' : 'No', // J: tcpa_consent
+      body.source || req.headers.origin || req.headers.referer || '', // K: source
+      typeof ip === 'string' ? ip : '', // L: ip_address
     ]];
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: 'Sheet1!A:G', // Match your sheet columns
+      range: 'Roofing Leads Funnel!A:L', // Using the correct tab name
       valueInputOption: 'USER_ENTERED',
       requestBody: { values },
     });
